@@ -1,0 +1,14 @@
+C:\Users\zorzi\source\repos\TicketAPI\TicketAPI\bin\Debug\netcoreapp2.1\TicketAPI.deps.json
+C:\Users\zorzi\source\repos\TicketAPI\TicketAPI\bin\Debug\netcoreapp2.1\TicketAPI.runtimeconfig.json
+C:\Users\zorzi\source\repos\TicketAPI\TicketAPI\bin\Debug\netcoreapp2.1\TicketAPI.runtimeconfig.dev.json
+C:\Users\zorzi\source\repos\TicketAPI\TicketAPI\bin\Debug\netcoreapp2.1\TicketAPI.dll
+C:\Users\zorzi\source\repos\TicketAPI\TicketAPI\obj\Debug\netcoreapp2.1\TicketAPI.csprojAssemblyReference.cache
+C:\Users\zorzi\source\repos\TicketAPI\TicketAPI\obj\Debug\netcoreapp2.1\TicketAPI.csproj.CoreCompileInputs.cache
+C:\Users\zorzi\source\repos\TicketAPI\TicketAPI\obj\Debug\netcoreapp2.1\TicketAPI.RazorAssemblyInfo.cache
+C:\Users\zorzi\source\repos\TicketAPI\TicketAPI\obj\Debug\netcoreapp2.1\TicketAPI.RazorAssemblyInfo.cs
+C:\Users\zorzi\source\repos\TicketAPI\TicketAPI\obj\Debug\netcoreapp2.1\TicketAPI.AssemblyInfoInputs.cache
+C:\Users\zorzi\source\repos\TicketAPI\TicketAPI\obj\Debug\netcoreapp2.1\TicketAPI.AssemblyInfo.cs
+C:\Users\zorzi\source\repos\TicketAPI\TicketAPI\obj\Debug\netcoreapp2.1\TicketAPI.RazorTargetAssemblyInfo.cache
+C:\Users\zorzi\source\repos\TicketAPI\TicketAPI\bin\Debug\netcoreapp2.1\TicketAPI.pdb
+C:\Users\zorzi\source\repos\TicketAPI\TicketAPI\obj\Debug\netcoreapp2.1\TicketAPI.dll
+C:\Users\zorzi\source\repos\TicketAPI\TicketAPI\obj\Debug\netcoreapp2.1\TicketAPI.pdb
