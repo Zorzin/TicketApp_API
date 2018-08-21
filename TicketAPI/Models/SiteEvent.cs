@@ -15,5 +15,8 @@ namespace TicketAPI.Models
         public double TicketPrice { get; set; }
         public int TicketsAmount { get; set; }
         public string LongDetails { get; set; }
+
+        public virtual Place Place { get; set; }
+        public virtual IEnumerable<Ticket> Tickets { get; set; }
     }
 }
