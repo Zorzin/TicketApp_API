@@ -37,5 +37,14 @@ namespace TicketAPI.Controllers
                 })
                 .ToList();
         }
+
+        [HttpGet("{eventId}")]
+        public async Task<SiteEvent> GetEvent([FromRoute] int eventId)
+        {
+            return await _context.SiteEvents
+                .Include(x=>x.Place)
+                .ThenInclude(x=>x.City)
+                .FirstOrDefaultAsync(x => x.Id == eventId);
+        }
     }
 }
