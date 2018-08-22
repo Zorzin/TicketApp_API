@@ -46,5 +46,12 @@ namespace TicketAPI.Controllers
                 .ThenInclude(x=>x.City)
                 .FirstOrDefaultAsync(x => x.Id == eventId);
         }
+
+        [HttpGet("TicketsLeft/{eventId}")]
+        public async Task<int> GetTicketsLeft([FromRoute] int eventId)
+        {
+            var siteEvent = await _context.SiteEvents.FirstOrDefaultAsync(x => x.Id == eventId);
+            return siteEvent.TicketsAmount - await _context.Tickets.CountAsync(x => x.SiteEventId == eventId);
+        }
     }
 }
