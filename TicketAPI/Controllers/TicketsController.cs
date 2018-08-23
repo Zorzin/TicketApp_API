@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TicketAPI.Models;
+using TicketAPI.Services;
 
 namespace TicketAPI.Controllers
 {
@@ -13,11 +14,16 @@ namespace TicketAPI.Controllers
     [ApiController]
     public class TicketsController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-        public TicketsController(AppDbContext context)
+        private IEmailSender _emailSender;
+        private readonly AppDbContext _context;
+        private static Random random = new Random();
+
+        public TicketsController(AppDbContext context, IEmailSender emailSender)
         {
             _context = context;
+            _emailSender = emailSender;
         }
         // GET: api/Tickets/5
         [HttpGet("{id}")]
@@ -51,13 +57,18 @@ namespace TicketAPI.Controllers
             ticket.Code = GetRandomCode();
             _context.Tickets.Add(ticket);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetTicket", new { id = ticket.Id }, ticket);
+            await _emailSender.SendAsync(new Email()
+            {
+                Body = "Your activation code is: " + ticket.Code,
+                Recipient = ticket.Email,
+                Subject = "Activation code"
+            });
+            return Ok(ticket.Id);
         }
 
 
         // POST: api/Tickets
-        [HttpPost]
+        [HttpPost("verificationCode")]
         public async Task<IActionResult> PostTicket([FromBody] TicketConfirmation verifyCode)
         {
             if (!ModelState.IsValid)
@@ -71,7 +82,7 @@ namespace TicketAPI.Controllers
             {
                 ticket.IsConfirmed = true;
                 await _context.SaveChangesAsync();
-                return Ok();
+                return Ok(ticket);
             }
 
             return BadRequest();
@@ -100,7 +111,8 @@ namespace TicketAPI.Controllers
 
         private string GetRandomCode()
         {
-            return "1234"; //TODO
+            return new string(Enumerable.Repeat(chars, 6)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
         private bool TicketExists(int id)

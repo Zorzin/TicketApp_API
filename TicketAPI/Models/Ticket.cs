@@ -11,6 +11,7 @@ namespace TicketAPI.Models
         public int SiteEventId { get; set; }
         public double Price { get; set; }
         public string Owner { get; set; }
+        public string Email { get; set; }
         public string Code { get; set; }
         public bool IsConfirmed { get; set; }
 

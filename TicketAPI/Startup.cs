@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TicketAPI.Models;
+using TicketAPI.Services;
 
 namespace TicketAPI
 {
@@ -30,6 +31,8 @@ namespace TicketAPI
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddEntityFrameworkSqlite().AddDbContext<AppDbContext>
                 (option => option.UseSqlite(Configuration["database:connection"]));
+
+            services.AddScoped<IEmailSender, EmailSender>();
 
             services.AddCors(options =>
             {

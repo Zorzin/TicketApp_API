@@ -51,7 +51,7 @@ namespace TicketAPI.Controllers
         public async Task<int> GetTicketsLeft([FromRoute] int eventId)
         {
             var siteEvent = await _context.SiteEvents.FirstOrDefaultAsync(x => x.Id == eventId);
-            return siteEvent.TicketsAmount - await _context.Tickets.CountAsync(x => x.SiteEventId == eventId);
+            return siteEvent.TicketsAmount - await _context.Tickets.CountAsync(x => x.SiteEventId == eventId && x.IsConfirmed == true);
         }
     }
 }
